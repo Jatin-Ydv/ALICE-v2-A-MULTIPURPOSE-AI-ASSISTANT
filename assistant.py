@@ -21,8 +21,8 @@ import pyttsx3
 from datetime import datetime
 from dotenv import load_dotenv
 from utils.utils import get_news , get_weather
-from utils.calls import extract_news_param, function_call
-
+from utils.calls import extract_news_param, function_call, extract_todoist_param
+from utils.todo_utils import todo_ist, process_task_request
 
 #load variables from .env
 load_dotenv()
@@ -270,37 +270,56 @@ def callback(recognizer,audio):
         call2=call
         call=call['function']
         if 'take screenshot' in call:
-            print('Taking screenshot ...')
+            phrase="Hold on while I'm having a look ..."
+            print(phrase)
+            speak(phrase)
             take_screenshot()
             visual_context=vision_prompt(prompt=clean_prompt,photo_path='screenshot.jpg')
             prompt=clean_prompt
             
         elif 'capture webcam' in call:
-            print('Capturing webcam ...')
+            phrase='Let me have a quick look ...'
+            print(phrase)
+            speak(phrase)
             web_cam_capture()
             visual_context=vision_prompt(prompt=clean_prompt,photo_path='webcam.jpg')
             prompt=clean_prompt
             
         elif 'extract clipboard' in call:
-            print('Copying clipboard text ...')
+            phrase='Copying clipboard text ...'
+            print(phrase)
+            speak(phrase)
             paste=get_clipboard_text()
             prompt=f'{clean_prompt}\n\n CLIPBOARD CONTENT :{paste}'
             visual_context=None
             
         elif 'check weather' in call:
-            print('Analysing Weather ...')
+            phrase="Hold on while I'm Analysing Weather ..."
+            print(phrase)
+            speak(phrase)
             weather=fetch_weather(result=call2)
            
             prompt=f'{clean_prompt} \n\n WEATHER STATUS: {weather}'
             visual_context=None
         
         elif 'check news' in call:
-            print('Checking news ...')
+            phrase="Hold on while I'm Checking the latest news ..."
+            print(phrase)
+            speak(phrase)
             para=fetch_news_params(prompt=clean_prompt)
             
             news=fetch_news(para['parameters'])
             prompt=f'{clean_prompt} \n\n LATEST NEWS : {news}'
             visual_context=None
+            
+        elif 'manage task' in call:
+            phrase="Hold on while I'm working on your tasks ..."
+            print(phrase)
+            speak(phrase)
+            tasks_info=process_task_request(prompt=clean_prompt,groq_client=groq_client)
+            prompt=f'{clean_prompt} \n\n TASK STATUS :{tasks_info}'
+            visual_context=None
+            
         else:
             prompt=clean_prompt
             visual_context=None

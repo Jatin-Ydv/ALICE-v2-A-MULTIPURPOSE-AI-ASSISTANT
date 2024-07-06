@@ -36,8 +36,6 @@ def get_weather(result,api_key):
     time=result['parameters'].get('time','')
     
     
-    print('Inside weather\n')
-    
     base_url="http://api.weatherapi.com/v1/current.json"
     params={
         'key':api_key,
