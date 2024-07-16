@@ -85,6 +85,7 @@ class todo_ist:
         task_id = task.id
         response = todoist_api_client.delete_task(task_id=task_id)
         if response:
+            print("task deleted")
             return {"success": "Task deleted successfully"}
         else:
             return {"error": "Failed to delete task"}

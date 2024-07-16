@@ -23,6 +23,29 @@ from dotenv import load_dotenv
 from utils.utils import get_news , get_weather
 from utils.calls import extract_news_param, function_call, extract_todoist_param
 from utils.todo_utils import todo_ist, process_task_request
+from utils.mail_tools import get_emails
+import threading
+import time
+from utils.music_utils.music_client import play_song
+
+
+
+
+
+
+
+
+class Time_utils:
+    
+    def __init__(self,duration,task):
+        self.duration=duration
+        self.task=task
+        
+    def set_timer(self):
+        time.sleep(self.duration)
+        phrase=f"The Timer for {self.task} has ended!"
+        print(phrase)
+        speak(phrase)
 
 #load variables from .env
 load_dotenv()
@@ -62,8 +85,8 @@ sys_msg=("""
          text prompt that will be attached to their transcribed voice prompt. Generate the most useful and
          factual response possible, carefully considering all previous generated text in your response before
          adding new tokens to the response. Do not expect or request images, just use the context if added.
-         Use all of the context of this conversation so your response is relevant to the conversation. Make
-         your response clear and concise, avoiding any verbosity.
+         If the user says that they are completing some task, just respond with the user input as it is and nothing else.
+         Use all of the context of this conversation so your response is relevant to the conversation.
          """)
 
 convo=[{'role':'system','content':sys_msg}]
@@ -120,7 +143,7 @@ def fetch_news_params(prompt):
 
 
 def take_screenshot():
-    path='screenshot.jpg'
+    path='Infer_buffer/screenshot.jpg'
     screenshot=ImageGrab.grab()
     
     rgb_screenshot=screenshot.convert('RGB')
@@ -130,14 +153,17 @@ def take_screenshot():
 
 
 def web_cam_capture():
+    web_cam = cv2.VideoCapture(0) 
     if not web_cam.isOpened():
         print('ERROR : Camera did not open successfully')
         exit()
     
-    path='webcam.jpg'
+    path='Infer_buffer/webcam.jpg'
     ret,frame=web_cam.read()
     
     cv2.imwrite(path,frame)
+    
+    web_cam.release()
     
 def get_clipboard_text():
     clipboard_content=pyperclip.paste()
@@ -257,7 +283,7 @@ def wav_to_text(audio_path):
 def callback(recognizer,audio):
     
     
-    prompt_audio_path='prompt.wav'
+    prompt_audio_path='Infer_buffer/prompt.wav'
     with open(prompt_audio_path,'wb') as f:
         f.write(audio.get_wav_data())
         
@@ -274,7 +300,7 @@ def callback(recognizer,audio):
             print(phrase)
             speak(phrase)
             take_screenshot()
-            visual_context=vision_prompt(prompt=clean_prompt,photo_path='screenshot.jpg')
+            visual_context=vision_prompt(prompt=clean_prompt,photo_path='Infer_buffer/screenshot.jpg')
             prompt=clean_prompt
             
         elif 'capture webcam' in call:
@@ -282,7 +308,7 @@ def callback(recognizer,audio):
             print(phrase)
             speak(phrase)
             web_cam_capture()
-            visual_context=vision_prompt(prompt=clean_prompt,photo_path='webcam.jpg')
+            visual_context=vision_prompt(prompt=clean_prompt,photo_path='Infer_buffer/webcam.jpg')
             prompt=clean_prompt
             
         elif 'extract clipboard' in call:
@@ -319,15 +345,59 @@ def callback(recognizer,audio):
             tasks_info=process_task_request(prompt=clean_prompt,groq_client=groq_client)
             prompt=f'{clean_prompt} \n\n TASK STATUS :{tasks_info}'
             visual_context=None
+        
+        elif 'play song' in call:
+            phrase='Got it! Playing it for you right now!'
+            print(phrase)
+            speak(phrase)
+            song=call2['parameters']['song']
+            
+            thread = threading.Thread(target=play_song, args=(song,))
+            thread.start()
+            prompt=None
+            visual_context=None
+            
+                    
+        elif 'set timer' in call:
+            
+            para=call2['parameters']
+            x=0
+            if 'seconds' in para: x+=para['seconds']
+            if 'minutes' in para: x+=60*para['minutes']
+            if 'hours' in para: x+=3600*para['hours']
+            
+            
+            task=para['task'] if 'task' in para else ""
+            
+            time_util=Time_utils(duration=x,task=task)
+            help_phrase=f"for {task}" if task !="" else ""
+            phrase=f"The timer {help_phrase} has been set!"
+            print(phrase)
+            speak(phrase)
+            
+            threading.Thread(target=time_util.set_timer()).start()
+            prompt=None
+            visual_context=None
+            
+        
+        elif "check mails" in call:
+            phrase="Hold on while I'm checking your mail ..."
+            print(phrase)
+            speak(phrase)
+            n=call2['parameters']['n']
+            mails=get_emails(n)
+            prompt=f"YOUR EMAILS :{mails}"
+            visual_context=None
+            
             
         else:
             prompt=clean_prompt
             visual_context=None
         
-        
-        response=groq_prompt(prompt=prompt,img_context=visual_context)
-        print(f'{wake_word.upper()} : {response}')
-        speak(response)
+        if prompt is not None:
+            response=groq_prompt(prompt=prompt,img_context=visual_context)
+            print(f'{wake_word.upper()} : {response}')
+            speak(response)
 
 def start_listening():
     

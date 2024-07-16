@@ -9,7 +9,7 @@ def function_call(prompt,groq_client):
         assistant to respond to the user's prompt. The webcam can be assumed to be a normal laptop webcam
         facing the user. If the best response involves checking the weather or news, also include the required parameters like time and place. 
         You will respond with a JSON object containing the function name and parameters.
-        The available functions are: ["extract clipboard", "take screenshot", "capture webcam", "check weather", "check news","manage tasks", "None"].
+        The available functions are: ["extract clipboard", "take screenshot","play song", "capture webcam", "check weather", "check news","manage tasks", "check mails", "None"].
         Format your response as follows:
         {
             "function": "function_name",
@@ -42,12 +42,19 @@ def function_call(prompt,groq_client):
             "parameters": {}
         }
 
+        User: Play Shape of you by Ed Sheeran.
+        Response: {
+            "function": "play song",
+            "parameters": {
+                "song":Shape of you Ed Sheeran
+            }
+        }
+        
         User: Please capture a photo.
         Response: {
             "function": "capture webcam",
             "parameters": {}
         }
-
         User: What do I have in my clipboard?
         Response: {
             "function": "extract clipboard",
@@ -60,7 +67,13 @@ def function_call(prompt,groq_client):
             "parameters": {
             }
         }
-
+        User: Get my recent two emails.
+        Response: {
+            "function": "check mails",
+            "parameters": {
+                "n":2
+            }
+        }
         User: Delete the task with title 'Buy Groceries'.
         Response: {
             "function": "manage task",
