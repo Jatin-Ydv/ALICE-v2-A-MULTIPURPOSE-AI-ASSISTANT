@@ -1,4 +1,4 @@
-# ALICE V2 (Artificial Intelligence for Learning, Interaction, Coordination, and Efficiency)
+# ALICE-v2 (Artificial Intelligence for Learning, Interaction, Coordination, and Efficiency)
 
 Welcome to ALICE V2, your ultimate voice-enabled AI companion tailored for efficiency and convenience. ALICE V2 isn't just another virtual assistant—it's a powerhouse of capabilities designed to enhance your productivity and streamline your daily tasks seamlessly.
 
