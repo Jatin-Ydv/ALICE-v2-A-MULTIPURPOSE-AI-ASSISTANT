@@ -5,19 +5,19 @@ Welcome to ALICE V2, your ultimate voice-enabled AI companion tailored for effic
 ## Features
 
 ### General Queries
-ALICE V2 excels at answering a wide range of queries, whether you need quick facts, definitions, or detailed explanations. Its robust natural language processing capabilities ensure accurate and timely responses to keep you informed.
+ALICE excels at answering a wide range of queries, whether you need quick facts, definitions, or detailed explanations. Its robust natural language processing capabilities ensure accurate and timely responses to keep you informed.
 
 ### Clipboard Management
-Effortlessly manage clipboard content across your devices with ALICE V2. Copy important snippets and retrieve them whenever needed, ensuring seamless continuity in your workflow.
+Effortlessly manage clipboard content across your devices with ALICE. Copy important snippets and retrieve them whenever needed, ensuring seamless continuity in your workflow.
 
 ### Screen and Webcam Analysis
-ALICE V2 goes beyond traditional assistants by offering screen and webcam analysis capabilities. Need insights into your current project's progress? ALICE V2 can analyze your screen activities, providing valuable feedback. Planning a virtual meeting? ALICE V2 can assess webcam feeds to ensure optimal lighting and visibility.
+ALICE goes beyond traditional assistants by offering screen and webcam analysis capabilities. Need insights into your current project's progress? ALICE can analyze your screen activities, providing valuable feedback. Planning a virtual meeting? ALICE can assess webcam feeds to ensure optimal lighting and visibility.
 
 ### News and Weather Updates
-Stay informed with ALICE V2's ability to fetch the latest news updates and weather forecasts. Whether you need a quick overview or detailed reports, ALICE V2 delivers information tailored to your preferences and location.
+Stay informed with ALICE's ability to fetch the latest news updates and weather forecasts. Whether you need a quick overview or detailed reports, ALICE delivers information tailored to your preferences and location.
 
 ### Task Management
-Organize your tasks efficiently with ALICE V2's comprehensive task management features. Set reminders, update schedules, retrieve task details, and delete completed tasks—all through simple voice commands.
+Organize your tasks efficiently with ALICE v2's comprehensive task management features. Set reminders, update schedules, retrieve task details, and delete completed tasks—all through simple voice commands. Task management is seamlessly integrated with Todoist, allowing you to sync tasks across all your devices and benefit from Todoist's advanced task organization features.
 
 ### Email Checking and Summarizing
 ALICE V2 elevates email management to a new level. With its advanced email checking and summarizing capabilities, you can quickly get an overview of your inbox and detailed summaries of important messages. No more sifting through countless emails—ALICE V2 provides the highlights you need to stay on top of your correspondence.
