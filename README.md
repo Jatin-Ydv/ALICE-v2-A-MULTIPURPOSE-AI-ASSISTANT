@@ -20,13 +20,13 @@ Stay informed with ALICE's ability to fetch the latest news updates and weather 
 Organize your tasks efficiently with ALICE v2's comprehensive task management features. Set reminders, update schedules, retrieve task details, and delete completed tasks—all through simple voice commands. Task management is seamlessly integrated with Todoist, allowing you to sync tasks across all your devices and benefit from Todoist's advanced task organization features.
 
 ### Email Checking and Summarizing
-ALICE V2 elevates email management to a new level. With its advanced email checking and summarizing capabilities, you can quickly get an overview of your inbox and detailed summaries of important messages. No more sifting through countless emails—ALICE V2 provides the highlights you need to stay on top of your correspondence.
+ALICE v2 elevates email management to a new level. With its advanced email checking and summarizing capabilities, you can quickly get an overview of your inbox and detailed summaries of important messages. No more sifting through countless emails—ALICE V2 provides the highlights you need to stay on top of your correspondence.
 
 ### Music Playback
-Transform your workspace with ALICE V2's music playback feature. Simply request your favorite song or artist, and ALICE V2 will play it in the background, creating an enjoyable and motivating atmosphere as you work. Whether you need a calming background melody or an energizing tune, ALICE V2's seamless music integration caters to your auditory preferences.
+Transform your workspace with ALICE v2's music playback feature. Simply request your favorite song or artist, and ALICE v2 will play it in the background, creating an enjoyable and motivating atmosphere as you work. Whether you need a calming background melody or an energizing tune, ALICE v2's seamless music integration caters to your auditory preferences.
 
 ### Always Listening Mode
-ALICE V2 features an innovative "always listening" mode, activated by its wake word "ALICE." Simply utter its name—"ALICE" followed by your prompt—and watch as it springs into action, ready to execute tasks and respond to commands without manual activation. This innovative feature ensures that ALICE V2 is always ready to assist, making interaction natural and effortless.
+ALICE v2 features an innovative "always listening" mode, activated by its wake word "ALICE." Simply utter its name—"ALICE" followed by your prompt—and watch as it springs into action, ready to execute tasks and respond to commands without manual activation. This innovative feature ensures that ALICE V2 is always ready to assist, making interaction natural and effortless.
 
 ## Usage
 
