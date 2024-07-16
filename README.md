@@ -33,7 +33,7 @@ ALICE V2 features an innovative "always listening" mode, activated by its wake w
 1. **Installation**:
    - Clone the repository:
      ```
-     git clone https://github.com/Jatin-Ydv/ALICE-A-Multipurpose-AI-Assistant.git
+     git clone https://github.com/Jatin-Ydv/ALICE-v2-A-Multipurpose-AI-Assistant.git
      ```
    - Install dependencies:
      ```
