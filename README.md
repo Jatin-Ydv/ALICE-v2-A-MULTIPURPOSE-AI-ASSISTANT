@@ -40,8 +40,7 @@ ALICE v2 features an innovative "always listening" mode, activated by its wake w
      pip install -r requirements.txt
      ```
    - Set up your API Keys in .env file
-     ```
-
+     
 2. **Getting Started**:
    - Start ALICE V2:
      ```
